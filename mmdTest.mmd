@@ -1,0 +1,51 @@
+classDiagram
+
+class IAnimal {
+%% module: Animal
+    <<Interface>>
+    + getName(): string
+    + pet(food: string): void
+}
+
+class Animal {
+%% module: Animal
+    <<Abstract>>
+    - name: string
+    + getName(): string
+    + pet(food: string)
+}
+
+class Dog {
+%% module: Animal
+    + bark(): string
+    + feed(): void
+}
+
+class Labrador {
+%% module: Animal
+    + labrawoof()
+}
+
+class SpottedLabrador {
+%% module: Animal
+    - yes
+}
+
+class IHouse {
+%% module: House
+    <<Interface>>
+    live(): void
+}
+
+class Barn {
+%% module: House
+    stackHay(hay: string): HayStack
+}
+
+Animal ..|> IAnimal
+Animal <|-- Dog
+Dog <|-- Labrador
+Labrador <|-- SpottedLabrador
+
+Barn ..|> IHouse
+Dog <.. Barn
