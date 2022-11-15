@@ -1,4 +1,4 @@
-import { ObjectType } from "../types/object-type";
+import { ObjectType } from "../src-old/types/object-type";
 
 export default function (type?: string) {
     switch (type) {

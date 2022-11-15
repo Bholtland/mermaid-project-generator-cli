@@ -1,4 +1,4 @@
-import { MermaidParserObject } from "../nest-object.schema";
+import { MermaidParserObject } from "../src-old/nest-object.schema";
 
 export const RelationType = [
     "inheritance",

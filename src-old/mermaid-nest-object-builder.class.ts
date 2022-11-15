@@ -1,7 +1,7 @@
 import { MermaidNestObject } from "./nest-object.schema";
 import CodeBlockWriter from "code-block-writer";
 import lodash from "lodash";
-import { toCamelCase } from "./helpers/to-camel-case";
+import { toCamelCase } from "../src/to-camel-case";
 import { IMermaidObjectBuilder } from "./mermaid-object-builder.class";
 
 export class MermaidNestObjectBuilder implements IMermaidObjectBuilder {

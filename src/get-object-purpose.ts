@@ -1,4 +1,4 @@
-import { ObjectPurpose } from "../types/object-purpose";
+import { ObjectPurpose } from "../src-old/types/object-purpose";
 import regexMap from "./regex-map";
 
 export function getObjectPurpose(name: string) {

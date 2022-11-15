@@ -20,6 +20,8 @@
         "typeRoots": ["node_modules/@types"]
     },
     "exclude": ["node_modules", "lib"],
-    "include": ["src"],
+    "include": [
+      "src"
+    ],
     "types": ["node", "joi"]
 }

@@ -1,5 +1,5 @@
-import regexMap from "./helpers/regex-map";
-import relationsMapper, { Relation } from "./helpers/relations-mapper";
+import regexMap from "../src/regex-map";
+import relationsMapper, { Relation } from "../src/relations-mapper";
 
 export class MermaidRelationsParser {
     constructor(private mmdFile: string) {}

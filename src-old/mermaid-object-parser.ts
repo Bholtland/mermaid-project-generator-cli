@@ -1,25 +1,23 @@
-import { getObjectPurpose } from "./helpers/get-object-purpose";
-import objectTypeMapper from "./helpers/object-type-mapper";
-import regexMap from "./helpers/regex-map";
-import { toCamelCase } from "./helpers/to-camel-case";
-import { toKebabCase } from "./helpers/to-kebab-case";
-import visibilityMapper from "./helpers/visibility-mapper";
+import { getObjectPurpose } from "../src/get-object-purpose";
+import objectTypeMapper from "../src/object-type-mapper";
+import regexMap from "../src/regex-map";
+import { toCamelCase } from "../src/to-camel-case";
+import { toKebabCase } from "../src/to-kebab-case";
+import visibilityMapper from "../src/visibility-mapper";
 import { Method } from "./method.schema";
 import { Name } from "./name.schema";
 import { MermaidParserModule, MermaidParserObject } from "./nest-object.schema";
 import { Property } from "./property.schema";
 import { ObjectPurpose } from "./types/object-purpose";
+import relationsMapper, {Relation} from "../src/relations-mapper";
 
 export interface MermaidParserObjectPlain {
     name: Name;
     type: "class" | "abstract class" | "interface";
     purpose: ObjectPurpose;
-    superClasses?: string[] | MermaidParserObject[];
-    realizedFromInterfaces?: string[] | MermaidParserObject[];
     module?: string | MermaidParserModule;
     genericTypes?: string[];
-    primaryDependencies?: string[] | MermaidParserObject[];
-    foreignDependencies?: string[] | MermaidParserObject[];
+    relations: Relation[] ;
     properties: Property[];
     methods: Method[];
 }
@@ -83,6 +81,15 @@ export class MermaidObjectParser {
                 const genericMatches = [
                     ...(parts[0][2]?.matchAll(regexMap.objectGenerics) || []),
                 ];
+
+              // Transform to objects structure instead of arrays
+              const relationMatches = [
+                ...this.mmdFile.matchAll(regexMap.objectRelations),
+              ];
+
+              return relationMatches.map((regexResult) => {
+                return relationsMapper(regexResult);
+              });
 
                 const kebabObjectName = toKebabCase(parts[0][1]);
                 const camelObjectName = toCamelCase(parts[0][1]);

@@ -1,5 +1,5 @@
 import * as lodash from "lodash";
-import { Relation } from "./helpers/relations-mapper";
+import { Relation } from "../src/relations-mapper";
 import { MermaidParserObjectPlainTree } from "./mermaid-object-parser";
 import {
     MermaidParserObject,

@@ -1,4 +1,4 @@
-import { PropertyVisibility } from "../types/property.interface";
+import { PropertyVisibility } from "../src-old/types/property.interface";
 
 export default function (visibility?: string) {
     switch (visibility) {
